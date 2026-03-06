@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Foodies Restaurant</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+scroll-behavior:smooth;
+}
+
+img{
+max-width:100%;
+height:auto;
+}
+
+/* NAVBAR */
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 50px;
+background:black;
+color:white;
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+.logo{
+font-size:24px;
+font-weight:bold;
+}
+
+.nav-links{
+display:flex;
+list-style:none;
+}
+
+.nav-links li{
+margin:0 15px;
+}
+
+.nav-links a{
+color:white;
+text-decoration:none;
+font-size:18px;
+transition:0.3s;
+}
+
+.nav-links a:hover{
+color:orange;
+}
+
+/* HAMBURGER */
+
+.menu-toggle{
+display:none;
+flex-direction:column;
+cursor:pointer;
+}
+
+.menu-toggle span{
+height:3px;
+width:25px;
+background:white;
+margin:4px;
+}
+
+/* HERO */
+
+.hero{
+height:90vh;
+background:url("https://images.unsplash.com/photo-1504674900247-0877df9cc836");
+background-size:cover;
+background-position:center;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+}
+
+.hero-text h1{
+font-size:60px;
+animation:fadeIn 2s;
+}
+
+.hero-text p{
+margin-top:10px;
+font-size:20px;
+}
+
+.hero-text button{
+margin-top:20px;
+padding:12px 30px;
+background:orange;
+border:none;
+font-size:18px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.hero-text button:hover{
+background:red;
+}
+
+/* ANIMATION */
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateY(40px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+/* MENU */
+
+.menu{
+padding:80px;
+text-align:center;
+}
+
+.food-container{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:30px;
+margin-top:40px;
+}
+
+.food-card{
+width:250px;
+border-radius:10px;
+overflow:hidden;
+background:white;
+transition:0.4s;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+.food-card img{
+width:100%;
+height:180px;
+object-fit:cover;
+}
+
+.food-card h3{
+padding:10px;
+}
+
+.price{
+color:red;
+margin-bottom:10px;
+}
+
+.food-card:hover{
+transform:translateY(-10px);
+}
+
+/* GALLERY */
+
+.gallery{
+padding:80px;
+background:#f4f4f4;
+text-align:center;
+}
+
+.gallery-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin-top:30px;
+}
+
+.gallery-grid img{
+width:100%;
+height:200px;
+object-fit:cover;
+transition:0.4s;
+}
+
+.gallery-grid img:hover{
+transform:scale(1.1);
+}
+
+/* CONTACT */
+
+.contact{
+padding:80px;
+text-align:center;
+}
+
+.contact form{
+max-width:500px;
+margin:auto;
+display:flex;
+flex-direction:column;
+}
+
+.contact input,
+.contact textarea{
+padding:12px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:5px;
+font-size:16px;
+}
+
+.contact textarea{
+height:120px;
+resize:none;
+}
+
+.contact button{
+padding:12px;
+background:orange;
+color:white;
+border:none;
+font-size:18px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.contact button:hover{
+background:red;
+}
+
+/* FOOTER */
+
+footer{
+background:black;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width:768px){
+
+.navbar{
+padding:15px 20px;
+}
+
+.nav-links{
+position:absolute;
+top:60px;
+right:0;
+background:black;
+flex-direction:column;
+width:200px;
+display:none;
+}
+
+.nav-links li{
+margin:20px;
+}
+
+.menu-toggle{
+display:flex;
+}
+
+.hero-text h1{
+font-size:35px;
+}
+
+.hero{
+height:70vh;
+}
+
+.food-container{
+flex-direction:column;
+align-items:center;
+}
+
+.gallery-grid{
+grid-template-columns:1fr;
+}
+
+.contact input,
+.contact textarea{
+width:90%;
+margin:auto;
+margin-top:10px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+<div class="logo">Foodies</div>
+
+<ul class="nav-links" id="navLinks">
+
+<li><a href="#">Home</a></li>
+<li><a href="#menu">Menu</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="#contact">Contact</a></li>
+
+</ul>
+
+<div class="menu-toggle" id="menuToggle">
+
+<span></span>
+<span></span>
+<span></span>
+
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-text">
+
+<h1>Delicious Food</h1>
+<p>Best Restaurant in Town</p>
+
+<button>Order Now</button>
+
+</div>
+
+</section>
+
+<!-- MENU -->
+
+<section class="menu" id="menu">
+
+<h2>Our Menu</h2>
+
+<div class="food-container">
+
+<div class="food-card">
+<img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd">
+<h3>Burger</h3>
+<p class="price">₹120</p>
+</div>
+
+<div class="food-card">
+<img src="https://images.unsplash.com/photo-1601924928584-1c1c1d19f5c1">
+<h3>Pizza</h3>
+<p class="price">₹250</p>
+</div>
+
+<div class="food-card">
+<img src="https://images.unsplash.com/photo-1550547660-d9450f859349">
+<h3>Sandwich</h3>
+<p class="price">₹90</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- GALLERY -->
+
+<section class="gallery" id="gallery">
+
+<h2>Food Gallery</h2>
+
+<div class="gallery-grid">
+
+<img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836">
+<img src="https://images.unsplash.com/photo-1550547660-d9450f859349">
+<img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd">
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+<h2>Contact Us</h2>
+
+<form action="https://formspree.io/f/mnjgqgrg" method="POST">
+
+<input type="hidden" name="_subject" value="New Food Website Message">
+
+<input type="text" name="name" placeholder="Your Name" required>
+
+<input type="email" name="email" placeholder="Your Email" required>
+
+<textarea name="message" placeholder="Your Message" required></textarea>
+
+<button type="submit">Send Message</button>
+
+</form>
+
+</section>
+
+<footer>
+
+<p>© 2026 Foodies Restaurant</p>
+
+</footer>
+
+<script>
+
+let toggle = document.getElementById("menuToggle")
+let nav = document.getElementById("navLinks")
+
+toggle.onclick = function(){
+
+if(nav.style.display=="flex"){
+nav.style.display="none"
+}
+else{
+nav.style.display="flex"
+}
+
+}
+
+</script>
+
+</body>
+</html>
